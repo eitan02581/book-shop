@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body onload="init()">
+    <div class="container">
+        <button class="btn btn-primary add-book-btn" onclick="onOpenModal()">Add book</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th onclick="onSortBy('id')" scope="col">Id</th>
+                    <th onclick="onSortBy('title')" scope="col">Title</th>
+                    <th onclick="onSortBy('price')" scope="col">Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        </table>
+        <button class="btn btn-info" onclick="onPreviusPage()">Previus Page</button>
+        <span id="prevNextIndx"></span>
+        <button class="btn btn-info" onclick="onNextPage()">Next Page</button>
+    </div>
+
+
+
+    <div class=" add-modal modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span onclick="onCloseModal()" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+
+                        <label for="">Book title</label>
+                        <input id="title-input" type="text">
+                        <div>
+                            <label for="">Book Price</label>
+                            <input id="price-input" type="text">
+                        </div>
+                        <div>
+                            <label for="">Book image</label>
+                            <input id="image-input" type="text">
+                        </div>
+                </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="onModalSaveBook()">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="onCloseModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="update-modal modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">UPDATE MODE - Book Id: <span></span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+
+
+                        <label for="">Book title</label>
+                        <input id="u-title-input" type="text">
+                        <div>
+                            <label for="">Book Price</label>
+                            <input id="u-price-input" type="text">
+                        </div>
+                        <div>
+                            <label for="">Book image</label>
+                            <input id="u-image-input" type="text">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="onUpdateSaveChanges()" data-toggle="modal"
+                        data-target="#exampleModal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="read-modal modal fade" id="readleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">READ MODE - Book Id: <span></span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Book Title: <span id="read-title"></span></h3>
+                    <div>
+                        <h3>Book Price: <span id="read-price"></span></h3>
+                    </div>
+                    <div>
+                        <h3>Book Images: <span id="read-images"></span></h3>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <hr>
+                    <button onclick="onRate('+')" class="btn btn-info">+</button>
+                    <span class="rate-num">0</span>
+                    <button onclick="onRate('-')" class="btn btn-light">-</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#readleModal">Save
+                            changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="./lib/bs4/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="./book-service.js"></script>
+        <script src="./book-controller.js"></script>
+        <script src="./util.js"></script>
+</body>
+
+</html>
